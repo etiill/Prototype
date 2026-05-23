@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Teacher;
 use App\Models\ParentProfile;
-use App\Models\DbAdministrator;
 use App\Models\SystemAdministrator;
 use App\Enums\userRole;
 use Illuminate\Http\Request;
@@ -44,7 +43,7 @@ class UserController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'role' => 'required|string|in:system_admin,db_admin,teacher,parent',
+            'role' => 'required|string|in:system_admin,teacher,parent',
         ]);
 
         try {
@@ -64,9 +63,6 @@ class UserController extends Controller
                         break;
                     case userRole::PARENT->value:
                         ParentProfile::create(['user_id' => $user->id]);
-                        break;
-                    case userRole::DB_ADMIN->value:
-                        DbAdministrator::create(['user_id' => $user->id]);
                         break;
                     case userRole::SYSTEM_ADMIN->value:
                         SystemAdministrator::create(['user_id' => $user->id]);
@@ -114,7 +110,7 @@ class UserController extends Controller
             'username' => 'sometimes|string|max:255|unique:users,username,' . $user->id,
             'email' => 'sometimes|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'sometimes|string|min:8',
-            'role' => 'sometimes|string|in:system_admin,db_admin,teacher,parent',
+            'role' => 'sometimes|string|in:system_admin,teacher,parent',
         ]);
 
         if ($request->has('password')) {

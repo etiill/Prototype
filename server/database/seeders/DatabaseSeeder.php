@@ -36,14 +36,5 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => 'parent',
         ]);
-
-        // DB Admin User
-        User::factory()->create([
-            'name' => 'DB Administrator',
-            'username' => 'db_admin',
-            'email' => 'dbadmin@prototype.com',
-            'password' => bcrypt('password'),
-            'role' => 'db_admin',
-        ]);
     }
 }

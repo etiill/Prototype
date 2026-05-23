@@ -39,11 +39,6 @@ class User extends Authenticatable
         return $this->hasOne(SystemAdministrator::class);
     }
 
-    public function dbAdministrator(): HasOne
-    {
-        return $this->hasOne(DbAdministrator::class);
-    }
-
     public function teacher(): HasOne
     {
         return $this->hasOne(Teacher::class);
