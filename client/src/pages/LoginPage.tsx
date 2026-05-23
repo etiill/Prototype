@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import AxiosInstance from '../api/AxiosInstance';
 
 
-type UserRole = 'system_admin' | 'teacher' | 'parent' | 'db_admin';
+type UserRole = 'system_admin' | 'teacher' | 'parent';
 
 interface LoginPageProps {
   onLogin: (role: UserRole, userId?: string) => void;
@@ -53,8 +53,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   const roles = [
     { id: 'system_admin' as const, title: 'Administrator', icon: Shield, color: 'bg-blue-500', description: 'Full system access' },
     { id: 'teacher' as const, title: 'Teacher', icon: UserCog, color: 'bg-green-500', description: 'Manage attendance & activities' },
-    { id: 'parent' as const, title: 'Parent/Guardian', icon: Users, color: 'bg-purple-500', description: 'View child & approve pickup' },
-    { id: 'db_admin' as const, title: 'Database Admin', icon: Database, color: 'bg-orange-500', description: 'Manage system data & logs' }
+    { id: 'parent' as const, title: 'Parent/Guardian', icon: Users, color: 'bg-purple-500', description: 'View child & approve pickup' }
   ];
 
   return (
@@ -68,14 +67,14 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           {!selectedRole ? (
             <div className="space-y-6">
               <h3 className="text-center font-semibold text-lg">Select Your Role</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+              <div className="flex flex-wrap justify-center gap-6">
                 {roles.map((role) => {
                   const Icon = role.icon;
                   return (
                     <button
                       key={role.id}
                       onClick={() => setSelectedRole(role.id)}
-                      className="p-6 cursor-pointer border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-lg transition-all text-center space-y-3"
+                      className="p-6 cursor-pointer border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-lg transition-all text-center space-y-3 w-full sm:w-64"
                     >
                       <div className={`${role.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto`}>
                         <Icon className="w-8 h-8 text-white" />

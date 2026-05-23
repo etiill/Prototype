@@ -5,7 +5,7 @@ import { Toaster, toast } from 'sonner';
 import AxiosInstance from './api/AxiosInstance';
 import { Loader2 } from 'lucide-react';
 
-type UserRole = 'system_admin' | 'teacher' | 'parent' | 'db_admin';
+type UserRole = 'system_admin' | 'teacher' | 'parent';
 
 export default function App() {
   const [user, setUser] = useState<{ role: UserRole; userId: string } | null>(null);

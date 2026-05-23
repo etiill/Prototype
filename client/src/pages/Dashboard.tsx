@@ -28,7 +28,7 @@ import { TimeBasedAuthorization } from '../features/auth/TimeBasedAuthorization'
 import { UserManagement } from '../features/users/UserManagement';
 
 interface DashboardProps {
-  role: 'admin' | 'teacher' | 'parent' | 'db_admin';
+  role: 'admin' | 'teacher' | 'parent';
   userId: string;
   onLogout: () => void;
 }
@@ -43,7 +43,6 @@ export function Dashboard({ role, userId, onLogout }: DashboardProps) {
     switch (role) {
       case 'admin': return 'Administrator';
       case 'teacher': return 'Teacher';
-      case 'db_admin': return 'Database Admin';
       default: return 'Parent/Guardian';
     }
   };

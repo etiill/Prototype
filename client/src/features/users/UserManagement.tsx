@@ -191,7 +191,6 @@ export function UserManagement() {
       case 'system_admin': return <Badge className="bg-blue-500">Admin</Badge>;
       case 'teacher': return <Badge className="bg-green-500">Teacher</Badge>;
       case 'parent': return <Badge className="bg-purple-500">Parent</Badge>;
-      case 'db_admin': return <Badge className="bg-orange-500">DB Admin</Badge>;
       default: return <Badge variant="outline">{role}</Badge>;
     }
   };
@@ -384,7 +383,6 @@ export function UserManagement() {
                   <SelectContent>
                     <SelectItem value="Teacher">Teacher</SelectItem>
                     <SelectItem value="Parent">Parent/Guardian</SelectItem>
-                    <SelectItem value="Db_admin">Database Admin</SelectItem>
                     <SelectItem value="System_admin">System Administrator</SelectItem>
                   </SelectContent>
                 </Select>
