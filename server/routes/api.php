@@ -11,10 +11,13 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/logs', [LogController::class, 'index']);
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
 
-    Route::apiResource('users', UserController::class);
+    // Admin-only routes
+    Route::middleware('admin')->group(function () {
+        Route::get('/logs', [LogController::class, 'index']);
+        Route::apiResource('users', UserController::class);
+    });
 });
